@@ -4,6 +4,15 @@
   font-family: 'Poppins', sans-serif;
   cursor: default;
 }
+#video-container {
+  width: 60%;
+}
+
+#video-container #video {
+  width: 100%;
+  border-radius: 20px;
+}
+
 
 :root {
   --background-color: #001220;
@@ -38,6 +47,7 @@ p{
 .colored-text {
   color: var(--primary-color);
 }
+
 
 .full-section {
   height: 90vh;
@@ -128,6 +138,17 @@ p{
 .form-input::placeholder {
   color: #fff;
 }
+.user-image {
+  width: 90%;
+  margin-top: -5rem;
+}
+.round-image {
+  width: 166px;
+  height: 166px;
+  border-radius: 50%; /* Nastavení na 50% pro kulatý tvar */
+  object-fit: cover; /* Zajistí, aby obrázek vyplnil prostor a nebyl deformovaný */
+}
+
 
 @media (width < 768px) {
   .background-image-container {

@@ -10,11 +10,12 @@ require_once('./temp/db_con.php');
 //funkce
 require_once('./temp/function.php');
 
-echo "<form action='register.php' method='post'>
+echo "<sesion class='boxes'>
+<form action='register.php' method='post'>
     <input type='email' placeholder='Email' name='email'><br>
     <input type='password' placeholder='heslo' name='password'><br>
     <input type='password' placeholder='znova heslo' name='password2'><br>
-    <input type='text' name='username' placeholder='username'>
+    <input type='text' name='username' placeholder='username'> <br>
     <input type='submit' name='submit' value='Odeslat'>
 </form>";
 
@@ -62,7 +63,8 @@ if (isset($_POST["submit"])) {
     }
 }
 
-echo "<a href='login.php'><button type='button'>Login</button></a>";
+echo "<p>Už máte účet?</p>
+<a href='login.php'><button type='button'>Login</button></a>";
 
 // Definice funkce secouredPass()
 

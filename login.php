@@ -34,11 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         //kontrola zda je heslo správné
         if (password_verify(secouredPass($password), $passDat)){
-            echo "Jste přihlášen";
             $_SESSION["email"] = $row["email"];
             $_SESSION["id"] = $row["id"];
             $_SESSION["username"] = $row["username"];
-            $_SESSION["prifilImg"] = $row["ProfilImg"]; //patrik pomůže s vkládnaním profilu
+            $_SESSION["profileImg"] = $row["profileImg"];
+            $_SESSION['friendCode'] = $row["friendCode"];
 
             // Získání id uživatele
             $idUsers = $row["id"];
@@ -75,5 +75,7 @@ function secouredPass($password) {
     //algoritmus hesla
     return $salt . $password . chunk_split($salt, 12 , ".");
 }
-
+echo "<p>Ještě nemáte učet?</p>
+<a href='register.php'><button type='button'>Registrovat se</button> </a>";
 ?>
+

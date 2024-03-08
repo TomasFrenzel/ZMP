@@ -33,8 +33,13 @@ echo '<!-- About us section -->
     </div>
   </div>
 </section>
-<section class="video">
-  //zde vložit video
+<section class="container mt-2 pt-3 d-flex flex-column align-items-center" id="about-project-section">
+<!-- Video -->
+<div id="video-container" class="mt-5">
+    <video id="video" controls poster="./imgs/thumbnail.png">
+        <source src="./video/video.mp4" type="video/mp4">
+    </video>
+</div>
 </section>';
 
 // Zahrnutí zápatí

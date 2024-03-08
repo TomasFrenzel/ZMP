@@ -1,7 +1,7 @@
 <?php
 session_start();
 $title = 'odpověd';
-include_once('./temp/heading.php');
+include_once('./temp/headingUser.php');
 require_once('./temp/db_con.php');
 
 $user_id = $_SESSION['id'];
@@ -46,9 +46,12 @@ $con->close();
     <title>Vyhodnocení odpovědi</title>
 </head>
 <body>
-    <h1>Vyhodnocení odpovědi</h1>
-    <p><?php echo $message; ?></p>
-    <p>Vaše body jsou :<?php echo $points?> </p>
-    <a href="quiz.php">Další otázka</a>
+    <sesion class='container txt-color d-flex  align-items-center flex-column full-section'>
+        <h1>Vyhodnocení odpovědi</h1>
+        <p><?php echo $message; ?></p>
+        <p>Vaše body jsou :<?php echo $points?> </p>
+        <a href="quiz.php" class="button mt-3">Další otázka</a>
+        <a href="user.php" class="button mt-3">Profil</a>
+    </sesion>
 </body>
 </html>

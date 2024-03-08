@@ -6,7 +6,7 @@ if(isset($_GET['logout'])) {
   session_unset();
   session_destroy();
 
-    header("Location: register.php"); // Přesměrování na index stránku nebo jinou vhodnou stránku
+    header("Location: index.php"); // Přesměrování na index stránku nebo jinou vhodnou stránku
     exit();
 }
 
@@ -61,14 +61,9 @@ echo "<!DOCTYPE html>
           </button>
           <div class='collapse navbar-collapse justify-content-end' id='nav'>
             <ul class='navbar-nav row-gap-3'>
+        
               <li class='navbar-link'>
-                <a href='' class='navlink'></a>
-              </li>
-              <li class='navbar-link'>
-                <a href='' class='navlink'></a>
-              </li>
-              <li class='navbar-link'>
-                <a href='' class='navlink'></a>
+                <a href='./user.php' class='navlink'>Účet</a>
               </li>
               <li class='navbar-link'>
                 <a href='./settings.php' class='navlink'>Nastavení</a>
