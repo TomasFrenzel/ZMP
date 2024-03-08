@@ -65,10 +65,5 @@ if (isset($_POST["submit"])) {
 echo "<a href='login.php'><button type='button'>Login</button></a>";
 
 // Definice funkce secouredPass()
-function secouredPass($password) {
-    // Definujte salt uvnitř funkce nebo jej předejte jako parametr
-    $salt = 'saka9@*6sJAjh*hg5jS@d3*4sad*H@A';
-    //algoritmus hesla
-    return $salt . $password . chunk_split($salt, 12 , ".");
-}
+
 ?>

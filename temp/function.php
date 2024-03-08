@@ -15,14 +15,11 @@ function generevoani_friendCode($con) {
     }
 }
 
-/*  použití funkce pro generovaní
-*   $gen_friednCode = generevoani_friendCode($con, $email);
+function secouredPass($password) {
+    // Definujte salt uvnitř funkce nebo jej předejte jako parametr
+    $salt = 'saka9@*6sJAjh*hg5jS@d3*4sad*H@A';
+    //algoritmus hesla
+    return $salt . $password . chunk_split($salt, 12 , ".");
+}
 
-*   Zavření spojení s databází
-*   mysqli_close($con);
-
-*   Vypsání unikátního kódu
-*   echo $uniqueCode;
-* "#" . 
-*/
 ?>

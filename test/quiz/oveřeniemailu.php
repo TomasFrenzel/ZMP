@@ -76,3 +76,29 @@ if (isset($_POST["submit"])) {
 
 echo "<a href='login.php'><button type='button'>Login</button></a>";
 ?>
+ // Odeslat ověřovací email
+                $to = $email;
+                $subject = 'Registrace na webu - ověření emailu';
+                $message = "Děkujeme za registraci. Pro dokončení registrace prosím klikněte na následující odkaz: http://example.com/verify.php?code=$verificationCode";
+                $headers = 'From: info@example.com' . "\r\n" .
+                    'Reply-To: info@example.com' . "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
+
+                mail($to, $subject, $message, $headers);
+
+                // Přesměrování na login.php po úspěšné registraci
+                header('location: login.php');
+                exit();
+            } else {
+                echo 'Jedno z vašich zadaných hesel se neshoduje';
+            }
+        } else {
+            echo 'Tento emailová adresa je již využívána';
+        }
+    } else {
+        echo "<h2>Musíte vyplnit všechna povinná pole</h2>";
+    }
+}
+
+echo "<a href='login.php'><button type='button'>Login</button></a>";
+?>

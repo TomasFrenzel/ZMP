@@ -1,4 +1,6 @@
 <?php 
+
+session_start();
 //stránka
 $title = "nastavení";
 
@@ -7,6 +9,13 @@ include_once('./temp/heading.php');
 
 //Propojení
 require_once('./temp/db_con.php');
+
+//funkce
+require_once('./temp/function.php');
+
+$username= $_SESSION["username"];
+$idUsers = $_SESSION["id"];
+
 
 
 echo"
@@ -19,62 +28,50 @@ echo"
 
 // Kontrola připojení
 if ($con->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $con->connect_error);
 }
 
 // Zpracování nahrávaného souboru
-$target_dir = "uploads/"; // Adresář pro ukládání nahrávaných souborů
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-// Kontrola, zda je soubor skutečně obrázek
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } elseif ($check == Null){
-        echo"nevybrali jste žádny soubor";
-    }else {
-        echo "Soubor není obrázek.";
-        $uploadOk = 0;
-    }
-}
 
 
-// Kontrola velikosti souboru
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-    echo "Omllouváme se ake váš obrázek je moc velký.";
-    $uploadOk = 0;
-}
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $target_dir = "profileImg/"; // Adresář pro ukládání nahrávaných souborů
 
-// Povolené formáty obrázků (zde jsem uvedl příklad pro JPEG)
-if($imageFileType != "jpg" && $imageFileType != "jpeg") {
-    echo "Omlouváme se ale jsou povoleny jenom JPG, JPEG.";
-    $uploadOk = 0;
-}
-
-// Nahrání souboru, pokud všechny kontroly proběhnou v pořádku
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-        // Uložení cesty k obrázku do databáze
-        $sql = "INSERT INTO users (profileImg) VALUES ('$target_file')";
-        if ($con->query($sql) === TRUE) {
-            echo "Nahraní probehlo uspešně.";
-        } else {
-            echo "Error: " . $sql . "<br>" . $con->error;
-        }
+    // Kontrola, zda byl vybrán soubor
+    if(empty($_FILES["fileToUpload"]["name"])) {
+        echo "Musíte vybrat soubor.";
     } else {
-        echo "Omlouváme se ale nastala chyba v nahrárvaní souboru do databáze.";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Pokračujte s nahráním souboru pouze pokud byl vybrán
+        // (dále můžete přidat další kontroly, např. kontrolu typu souboru)
     }
-}
+
+    // Povolené formáty obrázků (zde jsem uvedl příklad pro JPEG)
+ 
+    
+    if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType !="png") {
+        echo "Omlouváme se ale jsou povoleny jenom JPG, JPEG nebo PNG.";
+        
+    }
+
+    // Nahrání souboru, pokud všechny kontroly proběhnou v pořádku
+
+    else {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            // Uložení cesty k obrázku do databáze
+            $sql = "UPDATE users SET profileImg = '$target_file' WHERE id = '$idUsers'";
+            if ($con->query($sql)) {
+                echo "Soubor ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " se uspěšně nahrál.";
+                $_SESSION["prifilImg"] = $target_file;
+            } else {
+                echo "Error: " . $sql . "<br>" . $con->error;
+            }
+        } else {
+            echo "Omlouváme se ale nastala chyba v nahrárvaní souboru do databáze.";
+        }
+    }
 
 $con->close();
-
-
-
-?>
+}

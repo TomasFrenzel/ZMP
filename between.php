@@ -18,14 +18,17 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $points = $row['score'];
 
-echo $points;
 
 if ($user_answer === $correct_answer) {
     $message = "Správná odpověď!";
     $points += 10;
 } else {
-    $message = "Nesprávná odpověď. Správná odpověď byla: " . $correct_answer;
-    $points -= 10;
+    if($points <= 0){
+        $message = "Nesprávná odpověď. Správná odpověď byla: " . $correct_answer;
+    }else{
+        $message = "Nesprávná odpověď. Správná odpověď byla: " . $correct_answer;
+        $points -= 10;
+    }
 }
 
 $sql_update = "UPDATE scores SET score = '$points' WHERE idUsers = '$user_id'";
@@ -45,6 +48,7 @@ $con->close();
 <body>
     <h1>Vyhodnocení odpovědi</h1>
     <p><?php echo $message; ?></p>
+    <p>Vaše body jsou :<?php echo $points?> </p>
     <a href="quiz.php">Další otázka</a>
 </body>
 </html>

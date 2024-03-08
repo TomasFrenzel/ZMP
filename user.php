@@ -19,7 +19,7 @@
     
         //echo"<img src='$profilmg' alt='Úvodní fotka uživatele $username'>";
         echo"<h1>Jste přihlášen/a $username</h1>";
-        //echo"<h2>Vaše skore je $points <h2>";
+        //echo"<h2>Vaše skore je $_SESSION['points'] <h2>";
         
         
         
