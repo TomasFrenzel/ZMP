@@ -15,9 +15,10 @@ require_once('./temp/db_con.php');
 $username=$_SESSION["username"];
 $idUsers = $_SESSION["id"];
 
-
-
-//echo "<h1>ted se $username nachazíš v quizu :) </h1>";
+//kontrola zda je uživatel přihlášený
+$loggedIn = isset($_SESSION['id']);
+    if($loggedIn){
+        //echo "<h1>ted se $username nachazíš v quizu :) </h1>";
 // Získání náhodné otázky z databáze
 $sql = "SELECT * FROM question ORDER BY RAND() LIMIT 1";
 $result = $con->query($sql);
@@ -37,18 +38,25 @@ $con->close();
 
 //vytviření SESSIONS
 $_SESSION['otazka']=$otazka;
+echo"<h1>Bezpečnostní test</h1>
+<form action='between.php' method='post'>
+    <p>$otazka</p>
+    <input type='radio' name='answer' value='a'> $aText <br>
+    <input type='radio' name='answer' value='b'> $bText <br>
+    <input type='radio' name='answer' value='c'> $cText <br>
+    <input type='hidden' name='correct_answer' value=' $spravna'>
+    <input type='submit' name='submit' value='Vyhodnotit'>
+</form>";
+
+    } else{
+        header('location: block.php');
+    }
+
+
 ?>
 
 
-    <h1>Bezpečnostní test</h1>
-    <form action="between.php" method="post">
-        <p><?php echo $otazka; ?></p>
-        <input type="radio" name="answer" value="a"><?php echo $aText; ?><br>
-        <input type="radio" name="answer" value="b"><?php echo $bText; ?><br>
-        <input type="radio" name="answer" value="c"><?php echo $cText; ?><br>
-        <input type="hidden" name="correct_answer" value="<?php echo $spravna; ?>">
-        <input type="submit" name="submit" value="Další otázka">
-    </form>
+    
 
         
 

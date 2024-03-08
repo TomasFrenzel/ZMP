@@ -10,13 +10,14 @@ require_once('./temp/db_con.php');
 //funkce
 require_once('./temp/function.php');
 
-echo "<sesion class='boxes'>
+echo "<sesion class='container d-flex  align-items-center flex-column full-section color'>
+<h2 class='color p-4'>Registrovat se</h2>
 <form action='register.php' method='post'>
-    <input type='email' placeholder='Email' name='email'><br>
-    <input type='password' placeholder='heslo' name='password'><br>
-    <input type='password' placeholder='znova heslo' name='password2'><br>
-    <input type='text' name='username' placeholder='username'> <br>
-    <input type='submit' name='submit' value='Odeslat'>
+    <input type='email' placeholder='Email' name='email' class=''><br>
+    <input type='password' placeholder='heslo' name='password' class=''><br>
+    <input type='password' placeholder='znova heslo' name='password2' class=''><br>
+    <input type='text' name='username' placeholder='username' class=''  <br>
+    <input type='submit' name='submit' value='Odeslat' class='button m-4 align-items-center' >
 </form>";
 
 if (isset($_POST["submit"])) {
@@ -29,6 +30,19 @@ if (isset($_POST["submit"])) {
         $password = $_POST["password"];
         $password2 = $_POST["password2"];
         $username = $_POST["username"];
+        if (!preg_match('/^[a-zA-Z0-9_]+$/', $username))  {
+            echo "<h4>Uživatelské jméno obsahuje nepovolené znaky</h4>";
+            echo "<h5>Už máte účet?</h5>
+            <a href='login.php'><img src='./img/test.svg' alt='logo'></a>
+            </section>";
+            exit(); // Zastaví běh pokud uživatelské jméno obsahuje nepovolené znaky
+        }elseif(!preg_match('/^[a-zA-Z0-9_@]+$/', $password) || !preg_match('/^[a-zA-Z0-9_@]+$/', $password2)){
+            echo "<h4>Heslo obsahuje nepovolené znaky</h4>";
+            echo "<h5>Už máte účet?</h5>
+            <a href='login.php'><img src='./img/test.svg' alt='logo'></a>
+            </section>";
+            exit(); // Zastaví běh pokud heslo obsahuje nepovolené znaky
+        }
 
         // Zkontrolujte, zda email neexistuje již v databázi
         $query = "SELECT * FROM users WHERE email=?";
@@ -42,30 +56,30 @@ if (isset($_POST["submit"])) {
                 // Bezpečné hashování hesla
                 $hashPassword = password_hash(secouredPass($password), PASSWORD_BCRYPT, ['cost' => 12]);
                 $gen_friednCode = generevoani_friendCode($con);
+                $profileImgAuto="./profileImg/Group3AutoIMG987654321.svg";
 
                 // Vložení nového uživatele do databáze
-                $query = "INSERT INTO users (email, pass, username, friendCode) VALUES (?, ?, ?, ?)";
+                $query = "INSERT INTO users (email, pass, username, friendCode, profileImg) VALUES (?, ?, ?, ?, ?)";
                 $stmt = $con->prepare($query);
-                $stmt->bind_param("ssss", $email, $hashPassword, $username, $gen_friednCode);
+                $stmt->bind_param("sssss", $email, $hashPassword, $username, $gen_friednCode, $profileImgAuto);
                 $stmt->execute();
 
                 // Přesměrování na login.php po úspěšné registraci
                 header('location: login.php');
                 exit();
             } else {
-                echo 'Jedno z vašich zadaných hesel se neshoduje';
+                echo '<h4>Jedno z vašich zadaných hesel se neshoduje</h4> <br>';
             }
         } else {
-            echo 'Tento emailová adresa je již využívána';
+            echo '<h4>Tento emailová adresa je již využívána</h4> <br>';
         }
     } else {
-        echo "<h2>Musíte vyplnit všechna povinná pole</h2>";
+        echo "<h4>Musíte vyplnit všechna povinná pole</h4> <br>";
     }
 }
 
-echo "<p>Už máte účet?</p>
-<a href='login.php'><button type='button'>Login</button></a>";
-
-// Definice funkce secouredPass()
+echo "<h5>Už máte účet?</h5>
+<a href='login.php'><img src='./img/login.svg' alt='logo'></a>
+</section>";
 
 ?>

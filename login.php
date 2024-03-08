@@ -10,11 +10,12 @@ include_once('./temp/heading.php');
 require_once('./temp/db_con.php');
 
 echo"
-<H1>Prosím přihlašte se xddd</H1>
+<sesion class='container d-flex  align-items-center flex-column full-section color'>
+<h2 class='color p-4'>Přhlásit se</h2>
 <form action='login.php' method='post'>
-    <input type='email'placeholder='Email' name='email'><br>
-    <input type='password'placeholder='heslo' name='password'><br>
-    <input type='submit' name='login'value='Login'>
+    <input type='email'placeholder='Email' name='email' class='m-2'><br>
+    <input type='password'placeholder='heslo' name='password' class='m-2 '><br>
+    <input type='submit' name='login'value='Odeslat' class='button m-4 align-items-center'>
 </form>";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -62,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //otevře testUser.php
             header('location: user.php');
         } else {
-            echo "špatné heslo jste zadal";
+            echo "Zadali jste špatné heslo";
         }
     } else {
         echo "Uživatel s tímto emailem neexistuje";
@@ -75,7 +76,9 @@ function secouredPass($password) {
     //algoritmus hesla
     return $salt . $password . chunk_split($salt, 12 , ".");
 }
-echo "<p>Ještě nemáte učet?</p>
-<a href='register.php'><button type='button'>Registrovat se</button> </a>";
+echo "<h5>Ještě nemáte učet?</h5>
+<a href='register.php'><img src='./img/register.svg' alt='logo'></a>
+</section>";
+
 ?>
 

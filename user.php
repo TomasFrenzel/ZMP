@@ -4,7 +4,7 @@
     $loggedIn = isset($_SESSION['id']);
     if($loggedIn){
     
-        $title = "Testy";
+        $title = "Účet";
         //zahlaví
         require_once('./temp/headingUser.php');
     
@@ -34,8 +34,8 @@
         echo "<section
         class='container d-flex  align-items-center flex-column full-section'>
         <img src='$profileImg' alt='Úvodní fotka uživatele $username'class='round-image'>
-        <h1>$usernameFriendCode</h1>
-        <h2>Vaše skore je $score <h2>
+        <h1 class='red-header'>$usernameFriendCode</h1>
+        <h2>Máte <span class='colored-text'>$score </span>bodů<h2>
         
         
         
@@ -53,29 +53,9 @@
         }
     
     
-    }else {
-        echo"nejste přihlášeni";}
-    
-    
-    
-    
-     //databaze 
-        /*$query = "SELECT * FROM answers WHERE idUsers='" . $idUsers . "'";    
-        
-        $result = mysqli_query($con, $query);
-    
-        if (mysqli_num_rows($result) > 1) {
-            while($row = mysqli_fetch_assoc($result)){
-                //body z databze answers
-                $_SESSION['points']=$row["points"];
-            }
-        
-        }else {
-            //hazí to todle pole points jeste není vyplněné
-        echo'nastala chyba';
-        
-        }*/
+    }else{
+        header('location: block.php');
+    }
     
 
 ?>
-<img src="" alt="">

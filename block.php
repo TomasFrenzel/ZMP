@@ -1,15 +1,5 @@
-<?php
-
-// Zpracování odhlášení
-if(isset($_GET['logout'])) {
-  // Zrušení session
-  session_unset();
-  session_destroy();
-
-    header("Location: index.php"); // Přesměrování na index stránku nebo jinou vhodnou stránku
-    exit();
-}
-
+<?php 
+$title= "Blok";
 echo "<!DOCTYPE html>
 <html lang='cs'>
   <head>
@@ -46,34 +36,22 @@ echo "<!DOCTYPE html>
       <!-- Navbar -->
       <nav class='navbar navbar-expand-md py-md-4'>
         <div
-          class='container justify-content-lg-end justify-content-between w-100'>
+          class='container justify-content-left justify-content-between w-100'>
           <div class='navbar-brand img-logo-container'> <a href='index.html'>
-          <a href='index.php'> <img class='w-100' src='./img/logo4.svg
+          <a href='block.php'> <img class='w-100' src='./img/logo4.svg
             ' alt='Logo' /></a>
           </div>
-          <button
-            class='navbar-toggler bg-white mt-3'
-            data-bs-toggle='collapse'
-            data-bs-target='#nav'
-            aria-controls='nav'
-            aria-label='Expand navigation'>
-            <span class='navbar-toggler-icon'></span>
-          </button>
-          <div class='collapse navbar-collapse justify-content-end' id='nav'>
-            <ul class='navbar-nav row-gap-3'>
-        
-              <li class='navbar-link'>
-                <a href='./user.php' class='navlink'>Účet</a>
-              </li>
-              <li class='navbar-link'>
-                <a href='./settings.php' class='navlink'>Nastavení</a>
-              </li>
-              <li class='navbar-link'>
-                <a href='?logout=true' class='navlink'>Odhlasit se</a> <!-- Odkaz pro odhlášení -->
-              </li>
-            </ul>
-          </div>
-          </div>
-      </nav>";
+          </nav>
+          <section class='container d-flex justify-content-center align-items-center flex-column full-section' >
+          <h1>Prosím Registruj se nebo se Přihlaš</h1>
+          <a href='./register.php' class='button mt-3'>Klikni tady</a>
+          </section>
+          </div>";
       
+
+
+
+
+
+
 ?>

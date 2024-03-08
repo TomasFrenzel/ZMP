@@ -25,7 +25,7 @@ echo "<!DOCTYPE html>
       integrity='sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=='
       crossorigin='anonymous'
       referrerpolicy='no-referrer' />
-    <link rel='shortcut icon' href='./img/favicon.svg' type='image/x-icon' />
+    <link rel='shortcut icon' href='./img/maleLogo.svg' type='image/x-icon' />
     <title>Bezpečně na netu | $title</title>
   </head>
 
@@ -37,7 +37,7 @@ echo "<!DOCTYPE html>
         <div
           class='container justify-content-lg-end justify-content-between w-100'>
           <div class='navbar-brand img-logo-container'> <a href='index.html'>
-          <a href='index.php'> <img class='w-100' src='./img/logo2.svg
+          <a href='index.php'> <img class='w-100' src='./img/logo4.svg
             ' alt='Logo' /></a>
           </div>
           <button
