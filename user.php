@@ -42,7 +42,7 @@
           
         
         <form action='user.php' method='POST'>
-        <input type='submit' name='submit' value='Quize' class='button mt-3'>
+        <input type='submit' name='submit' value='Kvíz' class='button mt-3'>
         </form>";
     
         //<img  src='$profileImg' alt='Úvodní fotka uživatele $username' class='user-image'>;

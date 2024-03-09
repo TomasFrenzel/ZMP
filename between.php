@@ -9,7 +9,8 @@ $user_id = $_SESSION['id'];
 //kontrola zda je uživatel přihlášený
 $loggedIn = isset($_SESSION['id']);
     if($loggedIn){
-                $user_answer = $_POST['answer'];
+        if(!empty($_POST['answer'])){
+            $user_answer = $_POST['answer'];
         $correct_answer = $_POST['correct_answer'];
 
         $query = "SELECT score FROM scores WHERE idUsers=?";
@@ -48,9 +49,19 @@ $loggedIn = isset($_SESSION['id']);
             </sesion>
 
         ";
+        }else{
+            
+            echo "
+            <sesion class='container txt-color d-flex  align-items-center flex-column full-section'>
+            <h3>Musíte Vybrat odpověď</h3>
+            <a href='quiz.php'><button class='button mt-3'>Zpět do kvízu</button></a>
+            </sesion>";
+        }
+                
     }else{
         header('location: block.php');
     }
 
     
-?>
+?><button></button>
+

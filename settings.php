@@ -64,7 +64,7 @@ $loggedIn = isset($_SESSION['id']);
                     // Uložení cesty k obrázku do databáze
                     $sql = "UPDATE users SET profileImg = '$target_file' WHERE id = '$idUsers'";
                     if ($con->query($sql)) {
-                        echo "Soubor se úspěšně nahrál a cesta k obrázku byla aktualizována v databázi.";
+                        echo "Soubor se úspěšně nahrál.";
                         $_SESSION["profileImg"] = $target_file;
                     } else {
                         echo "Error: " . $sql . "<br>" . $con->error;
