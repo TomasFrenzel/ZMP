@@ -38,13 +38,13 @@ echo "<!DOCTYPE html>
         <div
           class='container justify-content-left justify-content-between w-100'>
           <div class='navbar-brand img-logo-container'> <a href='index.html'>
-          <a href='block.php'> <img class='w-100' src='./img/logo4.svg
+          <a href='index.php'> <img class='w-100' src='./img/logo4.svg
             ' alt='Logo' /></a>
           </div>
           </nav>
           <section class='container d-flex justify-content-center align-items-center flex-column full-section' >
-          <h1>Prosím Registruj se nebo se Přihlaš</h1>
-          <a href='./register.php' class='button mt-3'>Klikni tady</a>
+          <h1>Prosím Přihlašte se</h1>
+          <a href='./login.php' class='button mt-3'>Přiháslit se</a>
           </section>
           </div>";
       

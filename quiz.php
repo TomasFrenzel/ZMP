@@ -31,7 +31,7 @@ if($loggedIn){
         $cText = $row["cText"];
         $spravna = $row["spravna"];
     } else {
-        echo "No questions found.";
+        echo "Žádná otázka nebyla nalezena.";
     }
 
     $con->close();

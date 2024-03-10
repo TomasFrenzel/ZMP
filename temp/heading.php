@@ -36,7 +36,7 @@ echo "<!DOCTYPE html>
       <nav class='navbar navbar-expand-md py-md-4'>
         <div
           class='container justify-content-lg-end justify-content-between w-100'>
-          <div class='navbar-brand img-logo-container'> <a href='index.html'>
+          <div class='navbar-brand img-logo-container'>
           <a href='index.php'> <img class='w-100' src='./img/logo4.svg
             ' alt='Logo' /></a>
           </div>
@@ -54,7 +54,7 @@ echo "<!DOCTYPE html>
                 <a href='./index.php' class='navlink'>Úvod</a>
               </li>
               <li class='navbar-link'>
-                <a href='./aboutus.php' class='navlink'>O nás</a>
+                <a href='./aboutus.php' class='navlink'>O projektu</a>
               </li>
               <li class='navbar-link'>
                 <a href='./articles.php' class='navlink'>Články</a>

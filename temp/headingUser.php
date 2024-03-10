@@ -49,7 +49,7 @@ echo "<!DOCTYPE html>
           class='container justify-content-lg-end justify-content-between w-100'>
           <div class='navbar-brand img-logo-container'> <a href='index.html'>
           <a href='index.php'> <img class='w-100' src='./img/logo4.svg
-            ' alt='Logo' /></a>
+            ' alt='Logo' ></a>
           </div>
           <button
             class='navbar-toggler bg-white mt-3'

@@ -12,17 +12,17 @@ echo '<!-- About us section -->
   <div class="about-container d-flex justify-content-between pt-1">
     <div class="col-lg-6 mt-4">
       <div class="row about-description text-white ms-1 mt-5">
+      
         Tento projekt vznikl za účelem informovat ohledně nebezpečí na
-        internetu. Na naší stránce se nedozvíš jenom co je to hoax nebo
-        phishing, ale jak je taky odhalit. Naším cílem je poukázat na
+        internetu. Na nají stránce se nedozvíš jenom co je to hoax nebo
+        phishing, ale jak je taky odhalit. Mojím cílem je poukázat na
         problém informační negramotnosti, a jak občas můžou být podvodníci
         kreativní.
       </div>
       <div class="row about-description text-white ms-1 my-5">
-        Jsme studenti střední školy Informačních technologií. Před půl rokem
-        nám bylo zadáno vytvořit webovou stránku a my jsme si řekli, že
-        bychom ji mohli pousnout na jinou úroveň. Napadlo nás propojit nejen
-        teorii, ale i praxe.
+        Jsem studentem střední školy Informačních technologií. Před půl rokem
+        nám bylo zadáno vytvořit maturitní projekt na náše zvolené téma. Vybral jsem si bezpečnost na internetu. 
+        Mojim cílem bylo vytvoit stránku, která propojí praxy a vzdělání.
       </div>
     </div>
     <div class="col-lg-5 d-flex justify-content-end">
